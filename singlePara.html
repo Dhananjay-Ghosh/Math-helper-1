@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math-Helper</title>
+    <link rel="stylesheet" href="singlePage.css">
+    <!-- <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"> -->
+    <link rel="icon" href="iconmath.png" type="image/x-icon" />
+    <script>
+
+        // 1. last bit of a number
+        function lastbit(res) {
+            for (let i = 0; i < 65; i++) {
+                num = Math.pow(2, i);
+                if ((res ^ num) == 0)
+                    return res;
+                else if ((res & num) == num)
+                    res = res ^ num;
+            }
+            return res;
+        }
+
+        // 2. set-bit, get-bit of a number
+        function BitMask(pos) {
+            BM = 1 << pos;
+            return BM;
+        }
+
+        function isPrime(n1) {
+            for (let i = 2; i <= Math.sqrt(n1); i++) {
+                if (n1%i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function isSqrt(n1) {
+            var tm = Math.sqrt(n1);
+            if (n1 == (tm*tm)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function general() {
+            var n1 = document.getElementById('n1').value;
+            var e = document.getElementById('vSelect');
+            var value1 = e.value;
+            var v1 = document.getElementById('v1');
+            var v3 = document.getElementById('v3');
+            if (v1.value == '2') {
+                n1 = parseInt(n1,2);
+            }
+            if (v1.value == '8') {
+                n1 = parseInt(n1,8);
+            }
+            if (v1.value == '10') {
+                n1 = parseInt(n1);
+            }
+            if (v1.value == '16') {
+                n1 = parseInt(n1,16);
+            }
+            
+            // var text1 = e.options[e.selectedIndex].text;
+            // console.log(value1);
+            // console.log(text1);
+            var myResult = -1;
+            switch (value1) {
+                case '1':
+                    myResult = n1;
+                    break;
+
+                case '2':
+                    myResult = isPrime(n1);
+                    break;
+
+                case '3':
+                    myResult = isSqrt(n1);
+                    break;
+                
+                case '4':
+                    myResult = Math.sqrt(n1);
+                    break;
+                
+                case '5':
+                    myResult = lastbit(n1);
+                    break;
+                
+                case '6':
+                    myResult = BitMask(n1);
+                    break;
+                
+                default:
+                    myResult = n1;
+                    break;
+            }
+
+            if (v3.value == '2') {
+                myResult = myResult.toString(2);
+            }
+            if (v3.value == '8') {
+                myResult = myResult.toString(8);
+            }
+            if (v3.value == '16') {
+                myResult = myResult.toString(16);
+            }
+
+            document.getElementById('res').value = myResult;
+        }
+        
+        function clear() {
+            document.getElementById('n1').value = "";
+            document.getElementById('n2').value = "";
+            document.getElementById('res').value = "";
+        }
+
+
+        // var sfunc = document.getElementById('vSelect');
+        // console.log(sfunc);
+        // sfunc.addEventListener('change', () => {
+        //     var n1 = parseInt(document.getElementById('n1').value);
+        //     var n2 = parseInt(document.getElementById('n2').value);
+        //     var myResult = nCr(n1, n2);
+        //     document.getElementById('res').value = myResult;
+        // });
+
+
+
+    </script>
+    <!-- <script src="singlePage.js"></script> -->
+</head>
+
+<body>
+    <nav>
+        <div class="menu-bar">Home</div>
+        <!-- <ul>
+            <li><a href="#">nCr</a></li>
+            <li><a target="_blank" href="calnPr.html">nPr</a></li>
+            <li><a target="_blank" href="calhcf.html">HCF</a></li>
+            <li><a target="_blank" href="callcm.html">LCM</a></li>
+            <li><a target="_blank" href="calxor.html">X-OR</a></li>
+            <li><a target="_blank" href="calCB.html">Check ith Bit</a></li>
+            <li><a target="_blank" href="calLBP.html">Last Bit Pos</a></li>
+            <li><a target="_blank" href="calpow.html">Power</a></li>
+        </ul> -->
+    </nav>
+    <section>
+        <!-- <h1> -->
+        <div class="form vSelect">
+
+            <label style="font-size: 1.5em;" for="vSelect">Calculate</label>:
+            <select style="font-size: 1.5em;" id="vSelect" name="typeSelect" title="Data type of select" class="t">
+                <option value="1" selected="selected">Conversion</option>
+                <option value="2">isPrime</option>
+                <option value="3">isSqroot</option>
+                <option value="4">Sqroot</option>
+                <option value="5">lastbit</option>
+                <option value="6">powOf2</option>
+            </select>
+        </div>
+        <!-- </h1> -->
+        <!-- <p class="para">
+            Provide two inputs, select input and output types, then Calculate Result </p> -->
+        <div class="form">
+            <label for="v1">a. Input</label>: <select id="v1" name="type1" title="Data type of input 1" class="t">
+                <option value="2">binary (base 2)</option>
+                <option value="8">octal (base 8)</option>
+                <option value="10" selected="selected">decimal (base 10)</option>
+                <option value="16">hexadecimal (base 16)</option>
+                <!-- <option value="256">ASCII (base 256)</option> -->
+            </select>
+            <br /><br />
+            <input type="text" class="v" id="n1" style="height:2.5rem" placeholder="enter n" autofocus="autofocus">
+            <br /><br />
+            <div class="EC">
+                <!-- <input id="erase" type="reset" value="Reset"> -->
+                <button onclick="clear()" type="submit" id="erase">Clear</button>
+                <button onclick="general()" type="submit" title="Calculate" id="btn12">Calculate</button>
+            </div>
+            <br /><br />
+
+            <label for="v3"> Output</label>: <select id="v3" name="type3" title="Data type of the output" class="t">
+                <option value="2">binary (base 2)</option>
+                <option value="8">octal (base 8)</option>
+                <option value="10" selected="selected">decimal (base 10)</option>
+                <option value="16">hexadecimal (base 16)</option>
+                <!-- <option value="256">ASCII (base 256)</option> -->
+            </select>
+            <br /><br />
+            <input type="text" class="v" id="res" style="height:2.5rem" placeholder="result" autofocus="autofocus">
+        </div>
+
+        <h4 class="para">
+            Note :- For converting a number one form to another form, just select input and output types. </h4>
+
+            <h4 class="para">Looking for double parameter calculator ? <a style="text-decoration: none;color: blue;" href="index.html">Click here</a></h4>
+
+        <footer>
+            <ul class="social">
+                <li><a href="https://www.facebook.com/"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                <li><a href="https://www.instagram.com/"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                <li><a href="https://twitter.com/"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                <li><a href="https://www.linkedin.com/in/dhananjay-ghosh-01bb98213"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                <li><a href="https://wa.me/919334279890"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
+            </ul>
+            <ul class="about">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="mailto:dhananjayghosh7778@gmail.com">Contact</a></li>
+            </ul>
+            <h7>Copyright © 2022 dhananjay | All Rights Reserved</h7>
+            <!-- <p class="last">@2022 dhananjay | All Rights Reserved</p> -->
+        </footer>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- <script src="singlePage.js"></script> -->
+</body>
+
+</html>
