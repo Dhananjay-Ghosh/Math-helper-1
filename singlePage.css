@@ -47,7 +47,8 @@ section{
     width: 100%;
     /* height: 100vh; */
     height: 100%;
-    background:url(bk1.jpg);
+    /* background:url(bk1.jpg); */
+    background:url(bk3.jpg);
     background-size: cover;
     /* background-attachment: fixed; */
     /* background-position: center; */
@@ -175,6 +176,7 @@ abbr {
         padding: 0;
     }
 }
+
 /* nav ul li a{
     color: #00f;
 } */
@@ -198,6 +200,7 @@ footer .social,.about{
     justify-content: center;
     align-items: center;
     margin: 10px 0;
+    padding: 0px;
 }
 footer .social,.about li{
     list-style: none;
@@ -209,19 +212,19 @@ footer .social li a{
     transition: 0.5s;
 }
 footer .social li:nth-child(1) a{
-    color: blue;
+    color: rgb(34, 34, 235);
 }
 footer .social li:nth-child(2) a{
-    color: red;
+    color: rgb(255, 64, 6);
 }
 footer .social li:nth-child(3) a{
-    color: rgb(4, 133, 133);
+    color: rgb(5, 155, 255);
 }
 footer .social li:nth-child(4) a{
-    color: rgb(20, 20, 85);
+    color: rgb(2, 2, 189);
 }
 footer .social li:nth-child(5) a{
-    color: green;
+    color: rgb(0, 187, 0);
 }
 footer .social li a:hover{
     transform: translateY(-10px);
@@ -267,4 +270,11 @@ h7{
 #erase,#btn12{
     margin-left: 5px;
     margin-right: 5px;
+}
+
+@media (max-width:28rem) {
+    .form,.para{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }
