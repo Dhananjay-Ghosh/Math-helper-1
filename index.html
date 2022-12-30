@@ -126,10 +126,32 @@
         }
 
         function general() {
-            var n1 = parseInt(document.getElementById('n1').value);
-            var n2 = parseInt(document.getElementById('n2').value);
+            var n1 = document.getElementById('n1').value;
+            var n2 = document.getElementById('n2').value;
             var e = document.getElementById('vSelect');
             var value1 = e.value;
+            var v1 = document.getElementById('v1');
+            var v2 = document.getElementById('v2');
+            var v3 = document.getElementById('v3');
+            if (v1.value == '2') {
+                n1 = parseInt(n1,2);
+            }
+            if (v1.value == '8') {
+                n1 = parseInt(n1,8);
+            }
+            if (v1.value == '16') {
+                n1 = parseInt(n1,16);
+            }
+            if (v2.value == '2') {
+                n2 = parseInt(n2,2);
+            }
+            if (v2.value == '8') {
+                n2 = parseInt(n2,8);
+            }
+            if (v2.value == '16') {
+                n2 = parseInt(n2,16);
+            }
+            
             // var text1 = e.options[e.selectedIndex].text;
             // console.log(value1);
             // console.log(text1);
@@ -187,6 +209,17 @@
                     myResult = nCr(n1, n2);
                     break;
             }
+
+            if (v3.value == '2') {
+                myResult = myResult.toString(2);
+            }
+            if (v3.value == '8') {
+                myResult = myResult.toString(8);
+            }
+            if (v3.value == '16') {
+                myResult = myResult.toString(16);
+            }
+
             document.getElementById('res').value = myResult;
         }
         
@@ -215,7 +248,7 @@
 <body>
     <nav>
         <div class="menu-bar">Home</div>
-<!--         <ul>
+        <!-- <ul>
             <li><a href="#">nCr</a></li>
             <li><a target="_blank" href="calnPr.html">nPr</a></li>
             <li><a target="_blank" href="calhcf.html">HCF</a></li>
@@ -250,21 +283,23 @@
         <!-- <p class="para">
             Provide two inputs, select input and output types, then Calculate Result </p> -->
         <div class="form">
-            <label for="v1">a. Input</label>: <select name="type1" title="Data type of input 1" class="t">
+            <label for="v1">a. Input</label>: <select id="v1" name="type1" title="Data type of input 1" class="t">
                 <option value="2">binary (base 2)</option>
+                <option value="8">octal (base 8)</option>
                 <option value="10" selected="selected">decimal (base 10)</option>
                 <option value="16">hexadecimal (base 16)</option>
-                <option value="256">ASCII (base 256)</option>
+                <!-- <option value="256">ASCII (base 256)</option> -->
             </select>
             <br /><br />
             <input type="text" class="v" id="n1" style="height:2.5rem" placeholder="enter n" autofocus="autofocus">
             <br /><br />
 
-            <label for="v2">b. Input</label>: <select name="type2" title="Data type of input 2" class="t">
+            <label for="v2">b. Input</label>: <select id="v2" name="type2" title="Data type of input 2" class="t">
                 <option value="2">binary (base 2)</option>
+                <option value="8">octal (base 8)</option>
                 <option value="10" selected="selected">decimal (base 10)</option>
                 <option value="16">hexadecimal (base 16)</option>
-                <option value="256">ASCII (base 256)</option>
+                <!-- <option value="256">ASCII (base 256)</option> -->
             </select>
             <br /><br />
             <input type="text" class="v" id="n2" style="height:2.5rem" placeholder="enter r" autofocus="autofocus">
@@ -277,11 +312,12 @@
             </div>
             <br /><br />
 
-            <label for="v3"> Output</label>: <select name="type3" title="Data type of the output" class="t">
+            <label for="v3"> Output</label>: <select id="v3" name="type3" title="Data type of the output" class="t">
                 <option value="2">binary (base 2)</option>
+                <option value="8">octal (base 8)</option>
                 <option value="10" selected="selected">decimal (base 10)</option>
                 <option value="16">hexadecimal (base 16)</option>
-                <option value="256">ASCII (base 256)</option>
+                <!-- <option value="256">ASCII (base 256)</option> -->
             </select>
             <br /><br />
             <input type="text" class="v" id="res" style="height:2.5rem" placeholder="result" autofocus="autofocus">
@@ -290,11 +326,13 @@
         <h4 class="para">
             Note :- Provide two inputs, select input, output types and the method then Calculate Result. </h4>
 
+            <h4 class="para">Looking for single parameter calculator ? <a href="singlePara.html">Click here</a></h4>
+
         <footer>
             <ul class="social">
-                <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
-                <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
-                <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                <li><a href="https://www.facebook.com/"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                <li><a href="https://www.instagram.com/"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                <li><a href="https://twitter.com/"><ion-icon name="logo-twitter"></ion-icon></a></li>
                 <li><a href="https://www.linkedin.com/in/dhananjay-ghosh-01bb98213"><ion-icon name="logo-linkedin"></ion-icon></a></li>
                 <li><a href="https://wa.me/919334279890"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
             </ul>
@@ -305,7 +343,7 @@
                 <li><a href="#">Privacy</a></li>
                 <li><a href="mailto:dhananjayghosh7778@gmail.com">Contact</a></li>
             </ul>
-            <h7>Copyright @ 2022 dhananjay | All Rights Reserved</h7>
+            <h7>Copyright © 2022 dhananjay | All Rights Reserved</h7>
             <!-- <p class="last">@2022 dhananjay | All Rights Reserved</p> -->
         </footer>
     </section>
